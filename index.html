@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="show-previous-images">Show Before</button>
+    <button id="show-next-images">Show Next</button>
+    <div id="image-container"></div>
+
+    <script>
+        
+        const imageArray = [
+'https://1000logos.net/wp-content/uploads/2020/05/Google-Photos-logo.png',
+'https://yt3.googleusercontent.com/viNp17XpEF-AwWwOZSj_TvgobO1CGmUUgcTtQoAG40YaYctYMoUqaRup0rTxxxfQvWw3MvhXesw=s900-c-k-c0x00ffffff-no-rj',
+'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Google_Lens_Icon.svg/1200px-Google_Lens_Icon.svg.png'
+        ];
+
+        const showNextImageBtn = document.getElementById('show-next-images');
+        const showPreviousImageBtn = document.getElementById('show-previous-images');
+        const imageContainer = document.getElementById('image-container');
+
+        let num = 0;
+
+        function showNextImage() {
+            
+            imageContainer.innerHTML = '';
+
+            num++;
+            if(num == 3)
+            {
+                num=0;
+            }
+            console.log(num);
+
+            const img = document.createElement('img');
+                img.src = imageArray[num];   
+                img.style.width = '150px';
+                img.style.height = '150px';
+
+                imageContainer.appendChild(img);
+        }
+
+        function showPreviousImage(){
+
+            imageContainer.innerHTML = '';
+            num--;
+            if(num == -1)
+            {
+                num=2;
+            }
+            console.log(num);
+            const img = document.createElement('img');
+                img.src = imageArray[num];   
+                img.style.width = '150px';
+                img.style.height = '150px';
+
+                imageContainer.appendChild(img);
+        }
+
+        showNextImageBtn.addEventListener('click', showNextImage);
+        showPreviousImageBtn.addEventListener('click', showPreviousImage);
+    </script>
+
+</body>
+</html>
